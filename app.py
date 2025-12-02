@@ -4,7 +4,11 @@ from test import fetch_attendance
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={
+    r"/*": {
+        "origins": "https://attendancetracker-six.vercel.app"
+    }
+})
 
 @app.route('/attendance', methods=['GET'])
 def get_attendance():
